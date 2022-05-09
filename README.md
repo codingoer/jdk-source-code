@@ -4,6 +4,12 @@ JDK源码学习,Mac系统
 
 ## 版本说明
 
+- JDK8
+
+```shell
+git checkout mac_1.8.0_211
+```
+
 ```shell
 java -version
 ```
@@ -16,7 +22,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.211-b12, mixed mode)
 [Java SE 8 Archive Downloads (JDK 8u211 and later)
 ](https://www.oracle.com/java/technologies/javase/javase8u211-later-archive-downloads.html)
 
-百度网盘（jdk-8u211-macosx-x64.dmg）
+百度网盘[jdk-8u211-macosx-x64.dmg](https://pan.baidu.com/s/1_S7QtLSi_rLu3dIhJuqxhg?pwd=jabm)
 
 ## 准备工作
 
