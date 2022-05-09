@@ -1,4 +1,4 @@
-package com.codingoer.top.collection;
+package top.codingoer.collection;
 
 import java.util.HashMap;
 
