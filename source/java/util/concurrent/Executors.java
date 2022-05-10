@@ -87,8 +87,8 @@ public class Executors {
      */
     public static ExecutorService newFixedThreadPool(int nThreads) {
         return new ThreadPoolExecutor(nThreads, nThreads,
-                                      0L, TimeUnit.MILLISECONDS,
-                                      new LinkedBlockingQueue<Runnable>());
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>());
     }
 
     /**
@@ -108,9 +108,9 @@ public class Executors {
      */
     public static ExecutorService newWorkStealingPool(int parallelism) {
         return new ForkJoinPool
-            (parallelism,
-             ForkJoinPool.defaultForkJoinWorkerThreadFactory,
-             null, true);
+                (parallelism,
+                        ForkJoinPool.defaultForkJoinWorkerThreadFactory,
+                        null, true);
     }
 
     /**
@@ -123,9 +123,9 @@ public class Executors {
      */
     public static ExecutorService newWorkStealingPool() {
         return new ForkJoinPool
-            (Runtime.getRuntime().availableProcessors(),
-             ForkJoinPool.defaultForkJoinWorkerThreadFactory,
-             null, true);
+                (Runtime.getRuntime().availableProcessors(),
+                        ForkJoinPool.defaultForkJoinWorkerThreadFactory,
+                        null, true);
     }
 
     /**
@@ -149,9 +149,9 @@ public class Executors {
      */
     public static ExecutorService newFixedThreadPool(int nThreads, ThreadFactory threadFactory) {
         return new ThreadPoolExecutor(nThreads, nThreads,
-                                      0L, TimeUnit.MILLISECONDS,
-                                      new LinkedBlockingQueue<Runnable>(),
-                                      threadFactory);
+                0L, TimeUnit.MILLISECONDS,
+                new LinkedBlockingQueue<Runnable>(),
+                threadFactory);
     }
 
     /**
@@ -169,9 +169,9 @@ public class Executors {
      */
     public static ExecutorService newSingleThreadExecutor() {
         return new FinalizableDelegatedExecutorService
-            (new ThreadPoolExecutor(1, 1,
-                                    0L, TimeUnit.MILLISECONDS,
-                                    new LinkedBlockingQueue<Runnable>()));
+                (new ThreadPoolExecutor(1, 1,
+                        0L, TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<Runnable>()));
     }
 
     /**
@@ -190,10 +190,10 @@ public class Executors {
      */
     public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactory) {
         return new FinalizableDelegatedExecutorService
-            (new ThreadPoolExecutor(1, 1,
-                                    0L, TimeUnit.MILLISECONDS,
-                                    new LinkedBlockingQueue<Runnable>(),
-                                    threadFactory));
+                (new ThreadPoolExecutor(1, 1,
+                        0L, TimeUnit.MILLISECONDS,
+                        new LinkedBlockingQueue<Runnable>(),
+                        threadFactory));
     }
 
     /**
@@ -214,8 +214,8 @@ public class Executors {
      */
     public static ExecutorService newCachedThreadPool() {
         return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
-                                      60L, TimeUnit.SECONDS,
-                                      new SynchronousQueue<Runnable>());
+                60L, TimeUnit.SECONDS,
+                new SynchronousQueue<Runnable>());
     }
 
     /**
@@ -229,9 +229,9 @@ public class Executors {
      */
     public static ExecutorService newCachedThreadPool(ThreadFactory threadFactory) {
         return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
-                                      60L, TimeUnit.SECONDS,
-                                      new SynchronousQueue<Runnable>(),
-                                      threadFactory);
+                60L, TimeUnit.SECONDS,
+                new SynchronousQueue<Runnable>(),
+                threadFactory);
     }
 
     /**
@@ -249,7 +249,7 @@ public class Executors {
      */
     public static ScheduledExecutorService newSingleThreadScheduledExecutor() {
         return new DelegatedScheduledExecutorService
-            (new ScheduledThreadPoolExecutor(1));
+                (new ScheduledThreadPoolExecutor(1));
     }
 
     /**
@@ -270,7 +270,7 @@ public class Executors {
      */
     public static ScheduledExecutorService newSingleThreadScheduledExecutor(ThreadFactory threadFactory) {
         return new DelegatedScheduledExecutorService
-            (new ScheduledThreadPoolExecutor(1, threadFactory));
+                (new ScheduledThreadPoolExecutor(1, threadFactory));
     }
 
     /**
@@ -391,10 +391,10 @@ public class Executors {
     }
 
     /**
-     * Returns a {@link Callable} object that, when
-     * called, runs the given task and returns the given result.  This
-     * can be useful when applying methods requiring a
-     * {@code Callable} to an otherwise resultless action.
+     * Returns a {@link Callable} object that, when called, runs the given task and returns the given result.
+     * This can be useful when applying methods requiring a {@code Callable} to an otherwise resultless action.
+     * 返回一个Callable对象，当调用时，执行给定的任务并且返回给定的结果。
+     * 当需要将Callable方法应用到其他无结果的操作时，这很有用。（FutureTask中的应用）
      * @param task the task to run
      * @param result the result to return
      * @param <T> the type of the result
@@ -498,7 +498,7 @@ public class Executors {
     // Non-public classes supporting the public methods
 
     /**
-     * A callable that runs given task and returns given result
+     * A callable that runs given task and returns given result。运行给定任务和返回给定结果的Callable。可以理解为Callable的一个变体
      */
     static final class RunnableAdapter<T> implements Callable<T> {
         final Runnable task;
@@ -508,7 +508,7 @@ public class Executors {
             this.result = result;
         }
         public T call() {
-            task.run();
+            task.run(); // call方法调用Runnable的run方法，返回指定的结果
             return result;
         }
     }
@@ -528,11 +528,11 @@ public class Executors {
         public T call() throws Exception {
             try {
                 return AccessController.doPrivileged(
-                    new PrivilegedExceptionAction<T>() {
-                        public T run() throws Exception {
-                            return task.call();
-                        }
-                    }, acc);
+                        new PrivilegedExceptionAction<T>() {
+                            public T run() throws Exception {
+                                return task.call();
+                            }
+                        }, acc);
             } catch (PrivilegedActionException e) {
                 throw e.getException();
             }
@@ -568,22 +568,22 @@ public class Executors {
         public T call() throws Exception {
             try {
                 return AccessController.doPrivileged(
-                    new PrivilegedExceptionAction<T>() {
-                        public T run() throws Exception {
-                            Thread t = Thread.currentThread();
-                            ClassLoader cl = t.getContextClassLoader();
-                            if (ccl == cl) {
-                                return task.call();
-                            } else {
-                                t.setContextClassLoader(ccl);
-                                try {
+                        new PrivilegedExceptionAction<T>() {
+                            public T run() throws Exception {
+                                Thread t = Thread.currentThread();
+                                ClassLoader cl = t.getContextClassLoader();
+                                if (ccl == cl) {
                                     return task.call();
-                                } finally {
-                                    t.setContextClassLoader(cl);
+                                } else {
+                                    t.setContextClassLoader(ccl);
+                                    try {
+                                        return task.call();
+                                    } finally {
+                                        t.setContextClassLoader(cl);
+                                    }
                                 }
                             }
-                        }
-                    }, acc);
+                        }, acc);
             } catch (PrivilegedActionException e) {
                 throw e.getException();
             }
@@ -602,16 +602,16 @@ public class Executors {
         DefaultThreadFactory() {
             SecurityManager s = System.getSecurityManager();
             group = (s != null) ? s.getThreadGroup() :
-                                  Thread.currentThread().getThreadGroup();
+                    Thread.currentThread().getThreadGroup();
             namePrefix = "pool-" +
-                          poolNumber.getAndIncrement() +
-                         "-thread-";
+                    poolNumber.getAndIncrement() +
+                    "-thread-";
         }
 
         public Thread newThread(Runnable r) {
             Thread t = new Thread(group, r,
-                                  namePrefix + threadNumber.getAndIncrement(),
-                                  0);
+                    namePrefix + threadNumber.getAndIncrement(),
+                    0);
             if (t.isDaemon())
                 t.setDaemon(false);
             if (t.getPriority() != Thread.NORM_PRIORITY)
@@ -671,7 +671,7 @@ public class Executors {
         public boolean isShutdown() { return e.isShutdown(); }
         public boolean isTerminated() { return e.isTerminated(); }
         public boolean awaitTermination(long timeout, TimeUnit unit)
-            throws InterruptedException {
+                throws InterruptedException {
             return e.awaitTermination(timeout, unit);
         }
         public Future<?> submit(Runnable task) {
@@ -684,27 +684,27 @@ public class Executors {
             return e.submit(task, result);
         }
         public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks)
-            throws InterruptedException {
+                throws InterruptedException {
             return e.invokeAll(tasks);
         }
         public <T> List<Future<T>> invokeAll(Collection<? extends Callable<T>> tasks,
                                              long timeout, TimeUnit unit)
-            throws InterruptedException {
+                throws InterruptedException {
             return e.invokeAll(tasks, timeout, unit);
         }
         public <T> T invokeAny(Collection<? extends Callable<T>> tasks)
-            throws InterruptedException, ExecutionException {
+                throws InterruptedException, ExecutionException {
             return e.invokeAny(tasks);
         }
         public <T> T invokeAny(Collection<? extends Callable<T>> tasks,
                                long timeout, TimeUnit unit)
-            throws InterruptedException, ExecutionException, TimeoutException {
+                throws InterruptedException, ExecutionException, TimeoutException {
             return e.invokeAny(tasks, timeout, unit);
         }
     }
 
     static class FinalizableDelegatedExecutorService
-        extends DelegatedExecutorService {
+            extends DelegatedExecutorService {
         FinalizableDelegatedExecutorService(ExecutorService executor) {
             super(executor);
         }
