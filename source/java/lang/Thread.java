@@ -139,7 +139,7 @@ import sun.security.util.SecurityConstants;
  */
 public
 class Thread implements Runnable {
-    /* Make sure registerNatives is the first thing <clinit> does. */
+    /* Make sure registerNatives is the first thing <clinit> does. 定义在Thread.c文件中,注册一些本地方法供. */
     private static native void registerNatives();
     static {
         registerNatives();
@@ -246,7 +246,7 @@ class Thread implements Runnable {
      */
     public final static int MIN_PRIORITY = 1;
 
-   /**
+    /**
      * The default priority that is assigned to a thread.
      */
     public final static int NORM_PRIORITY = 5;
@@ -323,14 +323,14 @@ class Thread implements Runnable {
      *          cleared when this exception is thrown.
      */
     public static void sleep(long millis, int nanos)
-    throws InterruptedException {
+            throws InterruptedException {
         if (millis < 0) {
             throw new IllegalArgumentException("timeout value is negative");
         }
 
         if (nanos < 0 || nanos > 999999) {
             throw new IllegalArgumentException(
-                                "nanosecond timeout value out of range");
+                    "nanosecond timeout value out of range");
         }
 
         if (nanos >= 500000 || (nanos != 0 && millis == 0)) {
@@ -417,7 +417,7 @@ class Thread implements Runnable {
         setPriority(priority);
         if (inheritThreadLocals && parent.inheritableThreadLocals != null)
             this.inheritableThreadLocals =
-                ThreadLocal.createInheritedMap(parent.inheritableThreadLocals);
+                    ThreadLocal.createInheritedMap(parent.inheritableThreadLocals);
         /* Stash the specified stack size in case the VM cares */
         this.stackSize = stackSize;
 
@@ -679,8 +679,8 @@ class Thread implements Runnable {
     }
 
     /**
-     * Causes this thread to begin execution; the Java Virtual Machine
-     * calls the <code>run</code> method of this thread.
+     * Causes this thread to begin execution; the Java Virtual Machine calls the <code>run</code> method of this thread.
+     * 导致此线程开始执行; Java虚拟机会回调run方法。
      * <p>
      * The result is that two threads are running concurrently: the
      * current thread (which returns from the call to the
@@ -688,8 +688,8 @@ class Thread implements Runnable {
      * <code>run</code> method).
      * <p>
      * It is never legal to start a thread more than once.
-     * In particular, a thread may not be restarted once it has completed
-     * execution.
+     * In particular, a thread may not be restarted once it has completed execution.
+     * 启动线程超过一次永远不会合法。特别是，一旦线程执行完成可能不会重新启动。
      *
      * @exception  IllegalThreadStateException  if the thread was already
      *               started.
@@ -737,7 +737,7 @@ class Thread implements Runnable {
      * otherwise, this method does nothing and returns.
      * <p>
      * Subclasses of <code>Thread</code> should override this method.
-     *
+     * run 方法并不是真正的线程函数，只是被线程函数调用的一个Java方法而已.
      * @see     #start()
      * @see     #stop()
      * @see     #Thread(ThreadGroup, Runnable, String)
@@ -1239,7 +1239,7 @@ class Thread implements Runnable {
      *          cleared when this exception is thrown.
      */
     public final synchronized void join(long millis)
-    throws InterruptedException {
+            throws InterruptedException {
         long base = System.currentTimeMillis();
         long now = 0;
 
@@ -1289,7 +1289,7 @@ class Thread implements Runnable {
      *          cleared when this exception is thrown.
      */
     public final synchronized void join(long millis, int nanos)
-    throws InterruptedException {
+            throws InterruptedException {
 
         if (millis < 0) {
             throw new IllegalArgumentException("timeout value is negative");
@@ -1297,7 +1297,7 @@ class Thread implements Runnable {
 
         if (nanos < 0 || nanos > 999999) {
             throw new IllegalArgumentException(
-                                "nanosecond timeout value out of range");
+                    "nanosecond timeout value out of range");
         }
 
         if (nanos >= 500000 || (nanos != 0 && millis == 0)) {
@@ -1401,10 +1401,10 @@ class Thread implements Runnable {
         ThreadGroup group = getThreadGroup();
         if (group != null) {
             return "Thread[" + getName() + "," + getPriority() + "," +
-                           group.getName() + "]";
+                    group.getName() + "]";
         } else {
             return "Thread[" + getName() + "," + getPriority() + "," +
-                            "" + "]";
+                    "" + "]";
         }
     }
 
@@ -1441,7 +1441,7 @@ class Thread implements Runnable {
         SecurityManager sm = System.getSecurityManager();
         if (sm != null) {
             ClassLoader.checkClassLoaderPermission(contextClassLoader,
-                                                   Reflection.getCallerClass());
+                    Reflection.getCallerClass());
         }
         return contextClassLoader;
     }
@@ -1495,7 +1495,7 @@ class Thread implements Runnable {
     public static native boolean holdsLock(Object obj);
 
     private static final StackTraceElement[] EMPTY_STACK_TRACE
-        = new StackTraceElement[0];
+            = new StackTraceElement[0];
 
     /**
      * Returns an array of stack trace elements representing the stack dump
@@ -1539,7 +1539,7 @@ class Thread implements Runnable {
             SecurityManager security = System.getSecurityManager();
             if (security != null) {
                 security.checkPermission(
-                    SecurityConstants.GET_STACK_TRACE_PERMISSION);
+                        SecurityConstants.GET_STACK_TRACE_PERMISSION);
             }
             // optimization so we do not call into the vm for threads that
             // have not yet started or have terminated
@@ -1600,9 +1600,9 @@ class Thread implements Runnable {
         SecurityManager security = System.getSecurityManager();
         if (security != null) {
             security.checkPermission(
-                SecurityConstants.GET_STACK_TRACE_PERMISSION);
+                    SecurityConstants.GET_STACK_TRACE_PERMISSION);
             security.checkPermission(
-                SecurityConstants.MODIFY_THREADGROUP_PERMISSION);
+                    SecurityConstants.MODIFY_THREADGROUP_PERMISSION);
         }
 
         // Get a snapshot of the list of all threads
@@ -1621,7 +1621,7 @@ class Thread implements Runnable {
 
 
     private static final RuntimePermission SUBCLASS_IMPLEMENTATION_PERMISSION =
-                    new RuntimePermission("enableContextClassLoaderOverride");
+            new RuntimePermission("enableContextClassLoaderOverride");
 
     /** cache of subclass security audit results */
     /* Replace with ConcurrentReferenceHashMap when/if it appears in a future
@@ -1629,11 +1629,11 @@ class Thread implements Runnable {
     private static class Caches {
         /** cache of subclass security audit results */
         static final ConcurrentMap<WeakClassKey,Boolean> subclassAudits =
-            new ConcurrentHashMap<>();
+                new ConcurrentHashMap<>();
 
         /** queue for WeakReferences to audited subclasses */
         static final ReferenceQueue<Class<?>> subclassAuditsQueue =
-            new ReferenceQueue<>();
+                new ReferenceQueue<>();
     }
 
     /**
@@ -1664,27 +1664,27 @@ class Thread implements Runnable {
      */
     private static boolean auditSubclass(final Class<?> subcl) {
         Boolean result = AccessController.doPrivileged(
-            new PrivilegedAction<Boolean>() {
-                public Boolean run() {
-                    for (Class<?> cl = subcl;
-                         cl != Thread.class;
-                         cl = cl.getSuperclass())
-                    {
-                        try {
-                            cl.getDeclaredMethod("getContextClassLoader", new Class<?>[0]);
-                            return Boolean.TRUE;
-                        } catch (NoSuchMethodException ex) {
+                new PrivilegedAction<Boolean>() {
+                    public Boolean run() {
+                        for (Class<?> cl = subcl;
+                             cl != Thread.class;
+                             cl = cl.getSuperclass())
+                        {
+                            try {
+                                cl.getDeclaredMethod("getContextClassLoader", new Class<?>[0]);
+                                return Boolean.TRUE;
+                            } catch (NoSuchMethodException ex) {
+                            }
+                            try {
+                                Class<?>[] params = {ClassLoader.class};
+                                cl.getDeclaredMethod("setContextClassLoader", params);
+                                return Boolean.TRUE;
+                            } catch (NoSuchMethodException ex) {
+                            }
                         }
-                        try {
-                            Class<?>[] params = {ClassLoader.class};
-                            cl.getDeclaredMethod("setContextClassLoader", params);
-                            return Boolean.TRUE;
-                        } catch (NoSuchMethodException ex) {
-                        }
+                        return Boolean.FALSE;
                     }
-                    return Boolean.FALSE;
                 }
-            }
         );
         return result.booleanValue();
     }
@@ -1898,12 +1898,12 @@ class Thread implements Runnable {
         SecurityManager sm = System.getSecurityManager();
         if (sm != null) {
             sm.checkPermission(
-                new RuntimePermission("setDefaultUncaughtExceptionHandler")
-                    );
+                    new RuntimePermission("setDefaultUncaughtExceptionHandler")
+            );
         }
 
-         defaultUncaughtExceptionHandler = eh;
-     }
+        defaultUncaughtExceptionHandler = eh;
+    }
 
     /**
      * Returns the default handler invoked when a thread abruptly terminates
@@ -1928,7 +1928,7 @@ class Thread implements Runnable {
      */
     public UncaughtExceptionHandler getUncaughtExceptionHandler() {
         return uncaughtExceptionHandler != null ?
-            uncaughtExceptionHandler : group;
+                uncaughtExceptionHandler : group;
     }
 
     /**
@@ -1965,7 +1965,7 @@ class Thread implements Runnable {
      */
     static void processQueue(ReferenceQueue<Class<?>> queue,
                              ConcurrentMap<? extends
-                             WeakReference<Class<?>>, ?> map)
+                                     WeakReference<Class<?>>, ?> map)
     {
         Reference<? extends Class<?>> ref;
         while((ref = queue.poll()) != null) {
@@ -2014,7 +2014,7 @@ class Thread implements Runnable {
             if (obj instanceof WeakClassKey) {
                 Object referent = get();
                 return (referent != null) &&
-                       (referent == ((WeakClassKey) obj).get());
+                        (referent == ((WeakClassKey) obj).get());
             } else {
                 return false;
             }
