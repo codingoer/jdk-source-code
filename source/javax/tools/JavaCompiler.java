@@ -33,17 +33,17 @@ import java.util.concurrent.Callable;
 import javax.annotation.processing.Processor;
 
 /**
- * Interface to invoke Java&trade; programming language compilers from
- * programs.
+ * Interface to invoke Java&trade; programming language compilers from programs.
  *
- * <p>The compiler might generate diagnostics during compilation (for
- * example, error messages).  If a diagnostic listener is provided,
- * the diagnostics will be supplied to the listener.  If no listener
- * is provided, the diagnostics will be formatted in an unspecified
- * format and written to the default output, which is {@code
- * System.err} unless otherwise specified.  Even if a diagnostic
- * listener is supplied, some diagnostics might not fit in a {@code
- * Diagnostic} and will be written to the default output.
+ *
+ * <p>The compiler might generate diagnostics during compilation (for example, error messages).
+ * If a diagnostic listener is provided, the diagnostics will be supplied to the listener.
+ * If no listener is provided, the diagnostics will be formatted in an unspecified format and written to the default output,
+ * which is {@code System.err} unless otherwise specified.
+ *
+ * Even if a diagnostic listener is supplied, some diagnostics might not fit in a {@code Diagnostic} and will be written to the default output.
+ *
+ *
  *
  * <p>A compiler tool has an associated standard file manager, which
  * is the file manager that is native to the tool (or built-in).  The

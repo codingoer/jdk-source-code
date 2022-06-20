@@ -39,9 +39,9 @@ import java.util.logging.Level;
 import static java.util.logging.Level.*;
 
 /**
- * Provides methods for locating tool providers, for example,
- * providers of compilers.  This class complements the
- * functionality of {@link java.util.ServiceLoader}.
+ * Provides methods for locating tool providers, for example, providers of compilers.
+ * This class complements the functionality of {@link java.util.ServiceLoader}.
+ * 提供定位工具提供程序的方法，例如，编译器的提供程序。这个类补充了{@link java.util.ServiceLoader}的功能
  *
  * @author Peter von der Ah&eacute;
  * @since 1.6
@@ -90,13 +90,13 @@ public class ToolProvider {
     }
 
     private static final String defaultJavaCompilerName
-        = "com.sun.tools.javac.api.JavacTool";
+        = "com.sun.tools.javac.api.JavacTool"; // 默认的Java编译器的名称就是JavacTool
 
     /**
-     * Gets the Java&trade; programming language compiler provided
-     * with this platform.
-     * @return the compiler provided with this platform or
-     * {@code null} if no compiler is provided
+     * Gets the Java&trade; programming language compiler provided with this platform.<br/>
+     * 得到了Java&trade;该平台提供的编程语言编译器。
+     * @return the compiler provided with this platform or {@code null} if no compiler is provided <br/>
+     * 返回Java&trade;平台提供的编译器，如果没有提供编译器，则为{@code null}
      */
     public static JavaCompiler getSystemJavaCompiler() {
         return instance().getSystemTool(JavaCompiler.class, defaultJavaCompilerName);
@@ -143,8 +143,8 @@ public class ToolProvider {
         return instance;
     }
 
-    // Cache for tool classes.
-    // Use weak references to avoid keeping classes around unnecessarily
+    // Cache for tool classes. Use weak references to avoid keeping classes around unnecessarily
+    // 使用map为工具类缓存，使用弱引用来避免不必要的保留类
     private Map<String, Reference<Class<?>>> toolClasses = new HashMap<String, Reference<Class<?>>>();
 
     // Cache for tool classloader.
@@ -167,9 +167,9 @@ public class ToolProvider {
     private <T> Class<? extends T> getSystemToolClass(Class<T> clazz, String name) {
         Reference<Class<?>> refClass = toolClasses.get(name);
         Class<?> c = (refClass == null ? null : refClass.get());
-        if (c == null) {
+        if (c == null) { // 第一次从map获取为空
             try {
-                c = findSystemToolClass(name);
+                c = findSystemToolClass(name); // 根据全类名，比如com.sun.tools.javac.api.JavacTool查找系统工具Class
             } catch (Throwable e) {
                 return trace(WARNING, e);
             }
@@ -183,12 +183,12 @@ public class ToolProvider {
     private Class<?> findSystemToolClass(String toolClassName)
         throws MalformedURLException, ClassNotFoundException
     {
-        // try loading class directly, in case tool is on the bootclasspath
+        // try loading class directly, in case tool is on the bootclasspath  尝试加载类
         try {
             return Class.forName(toolClassName, false, null);
         } catch (ClassNotFoundException e) {
             trace(FINE, e);
-
+            // 如果工具不在bootclasspath上，查看默认的工具位置(tools.jar)
             // if tool not on bootclasspath, look in default tools location (tools.jar)
             ClassLoader cl = (refToolClassLoader == null ? null : refToolClassLoader.get());
             if (cl == null) {
