@@ -34,21 +34,21 @@ import javax.annotation.processing.Processor;
 
 /**
  * Interface to invoke Java&trade; programming language compilers from programs.
- *
+ * <br/>调用Java&trade的接口;程序中的编程语言编译器。
  *
  * <p>The compiler might generate diagnostics during compilation (for example, error messages).
  * If a diagnostic listener is provided, the diagnostics will be supplied to the listener.
+ * <br/>编译器可能在编译期间生成诊断信息(例如，错误消息)。如果提供了诊断侦听器，则将向该侦听器提供诊断信息。
  * If no listener is provided, the diagnostics will be formatted in an unspecified format and written to the default output,
  * which is {@code System.err} unless otherwise specified.
- *
+ * <br/>如果没有提供监听器，诊断将以未指定的格式格式化并写入默认输出，该输出为{@code System}, 除非另有说明。
  * Even if a diagnostic listener is supplied, some diagnostics might not fit in a {@code Diagnostic} and will be written to the default output.
+ * <br/>即使提供了诊断侦听器，一些诊断可能不适合{@code diagnostic}，并将被写入默认输出。
  *
- *
- *
- * <p>A compiler tool has an associated standard file manager, which
- * is the file manager that is native to the tool (or built-in).  The
- * standard file manager can be obtained by calling {@linkplain
- * #getStandardFileManager getStandardFileManager}.
+ * <p>A compiler tool has an associated standard file manager, which is the file manager that is native to the tool (or built-in).
+ * The standard file manager can be obtained by calling {@linkplain #getStandardFileManager getStandardFileManager}.
+ * <br/>编译器工具有一个相关的标准文件管理器，它是该工具本地(或内置)的文件管理器。
+ * <br/>标准文件管理器可以通过调用{@linkplain #getStandardFileManager getStandardFileManager}获得。
  *
  * <p>A compiler tool must function with any file manager as long as
  * any additional requirements as detailed in the methods below are

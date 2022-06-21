@@ -41,7 +41,7 @@ import static java.util.logging.Level.*;
 /**
  * Provides methods for locating tool providers, for example, providers of compilers.
  * This class complements the functionality of {@link java.util.ServiceLoader}.
- * 提供定位工具提供程序的方法，例如，编译器的提供程序。这个类补充了{@link java.util.ServiceLoader}的功能
+ * <br/>提供定位工具提供程序的方法，例如，编译器的提供程序。这个类补充了{@link java.util.ServiceLoader}的功能
  *
  * @author Peter von der Ah&eacute;
  * @since 1.6
@@ -93,10 +93,10 @@ public class ToolProvider {
         = "com.sun.tools.javac.api.JavacTool"; // 默认的Java编译器的名称就是JavacTool
 
     /**
-     * Gets the Java&trade; programming language compiler provided with this platform.<br/>
-     * 得到了Java&trade;该平台提供的编程语言编译器。
-     * @return the compiler provided with this platform or {@code null} if no compiler is provided <br/>
-     * 返回Java&trade;平台提供的编译器，如果没有提供编译器，则为{@code null}
+     * Gets the Java&trade; programming language compiler provided with this platform.
+     * <br/>得到了Java&trade;该平台提供的编程语言编译器。
+     * @return the compiler provided with this platform or {@code null} if no compiler is provided
+     * <br/>返回Java&trade;平台提供的编译器，如果没有提供编译器，则为{@code null}
      */
     public static JavaCompiler getSystemJavaCompiler() {
         return instance().getSystemTool(JavaCompiler.class, defaultJavaCompilerName);
