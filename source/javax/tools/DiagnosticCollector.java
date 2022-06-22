@@ -31,7 +31,7 @@ import java.util.List;
 
 /**
  * Provides an easy way to collect diagnostics in a list.
- *
+ * <br/>提供在列表中收集诊断信息的简单方法。
  * @param <S> the type of source objects used by diagnostics received
  * by this object
  *

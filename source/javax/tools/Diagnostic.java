@@ -29,12 +29,12 @@ import java.util.Locale;
 
 /**
  * Interface for diagnostics from tools.  A diagnostic usually reports
- * a problem at a specific position in a source file.  However, not
- * all diagnostics are associated with a position or a file.
- *
- * <p>A position is a zero-based character offset from the beginning of
- * a file.  Negative values (except {@link #NOPOS}) are not valid
- * positions.
+ * a problem at a specific position in a source file.
+ * However, not all diagnostics are associated with a position or a file.
+ * <br/>工具诊断接口。诊断通常报告源文件中特定位置的问题。然而，并不是所有的诊断都与某个位置或文件相关联。
+ * <p>A position is a zero-based character offset from the beginning of a file.
+ * Negative values (except {@link #NOPOS}) are not valid positions.
+ * <br/>位置是从文件开头开始的从零开始的字符偏移量。负值(除了{@link #NOPOS})不是有效的位置。
  *
  * <p>Line and column numbers begin at 1.  Negative values (except
  * {@link #NOPOS}) and 0 are not valid line or column numbers.
