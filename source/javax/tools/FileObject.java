@@ -33,13 +33,13 @@ import java.io.Writer;
 import java.net.URI;
 
 /**
- * File abstraction for tools.  In this context, <em>file</em> means
- * an abstraction of regular files and other sources of data.  For
- * example, a file object can be used to represent regular files,
- * memory cache, or data in databases.
+ * File abstraction for tools.  In this context, <em>file</em> means an abstraction of regular files and other sources of data.
+ * <br/>工具的文件抽象。在此上下文中，<em>file</em> 表示常规文件和其他数据源的抽象。
+ * For example, a file object can be used to represent regular files, memory cache, or data in databases.
+ * <br/>列如，文件对象可用于表示常规文件、内存缓存或数据库中的数据。
  *
- * <p>All methods in this interface might throw a SecurityException if
- * a security exception occurs.
+ * <p>All methods in this interface might throw a SecurityException if a security exception occurs.
+ * <br/>如果发生安全异常，此接口中的所有方法都可能抛出SecurityException。
  *
  * <p>Unless explicitly allowed, all methods in this interface might
  * throw a NullPointerException if given a {@code null} argument.

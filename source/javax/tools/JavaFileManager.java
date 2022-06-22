@@ -33,17 +33,17 @@ import java.util.Set;
 import static javax.tools.JavaFileObject.Kind;
 
 /**
- * File manager for tools operating on Java&trade; programming language
- * source and class files.  In this context, <em>file</em> means an
- * abstraction of regular files and other sources of data.
+ * File manager for tools operating on Java&trade; programming language source and class files.
+ * In this context, <em>file</em> means an abstraction of regular files and other sources of data.
+ * <br/>Java&trade工具的文件管理器; 编程语言源代码和类文件。在此上下文中，<em>file</em>表示常规文件和其他数据源的抽象。
  *
- * <p>When constructing new JavaFileObjects, the file manager must
- * determine where to create them.  For example, if a file manager
- * manages regular files on a file system, it would most likely have a
- * current/working directory to use as default location when creating
- * or finding files.  A number of hints can be provided to a file
- * manager as to where to create files.  Any file manager might choose
- * to ignore these hints.
+ * <p>When constructing new JavaFileObjects, the file manager must determine where to create them.
+ * For example, if a file manager manages regular files on a file system,
+ * it would most likely have a current/working directory to use as default location when creating or finding files.
+ * <br/>在构造新的JavaFileObjects时，文件管理器必须确定在哪里创建它们。
+ * <br/>例如，如果文件管理器管理文件系统上的常规文件，那么在创建或查找文件时，它很可能有一个当前/工作目录作为默认位置。
+ * A number of hints can be provided to a file manager as to where to create files.  Any file manager might choose to ignore these hints.
+ * <br/>可以向文件管理器提供许多关于在何处创建文件的提示。任何文件管理器都可能选择忽略这些提示。
  *
  * <p>Some methods in this interface use class names.  Such class
  * names must be given in the Java Virtual Machine internal form of

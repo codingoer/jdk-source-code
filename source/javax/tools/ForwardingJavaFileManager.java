@@ -32,8 +32,8 @@ import javax.tools.JavaFileObject.Kind;
 
 /**
  * Forwards calls to a given file manager.  Subclasses of this class
- * might override some of these methods and might also provide
- * additional fields and methods.
+ * might override some of these methods and might also provide additional fields and methods.
+ * <br/>将调用转发到给定的文件管理器。这个类的子类可能会重写其中一些方法，还可能提供额外的字段和方法。
  *
  * @param <M> the kind of file manager forwarded to by this object
  * @author Peter von der Ah&eacute;

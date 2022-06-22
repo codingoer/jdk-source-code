@@ -29,14 +29,14 @@ import javax.lang.model.element.NestingKind;
 import javax.lang.model.element.Modifier;
 
 /**
- * File abstraction for tools operating on Java&trade; programming language
- * source and class files.
+ * File abstraction for tools operating on Java&trade; programming language source and class files.
+ * <br/>在Java&trade上操作工具的文件抽象; 编程语言源代码和类文件。
  *
- * <p>All methods in this interface might throw a SecurityException if
- * a security exception occurs.
+ * <p>All methods in this interface might throw a SecurityException if a security exception occurs.
+ * <br/>如果发生安全异常，此接口中的所有方法都可能抛出SecurityException。
  *
- * <p>Unless explicitly allowed, all methods in this interface might
- * throw a NullPointerException if given a {@code null} argument.
+ * <p>Unless explicitly allowed, all methods in this interface might throw a NullPointerException if given a {@code null} argument.
+ * <br/>除非明确允许，否则如果给出一个{@code null}参数，该接口中的所有方法都可能抛出NullPointerException。
  *
  * @author Peter von der Ah&eacute;
  * @author Jonathan Gibbons
