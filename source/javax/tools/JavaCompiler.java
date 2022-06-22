@@ -51,61 +51,61 @@ import javax.annotation.processing.Processor;
  * <br/>标准文件管理器可以通过调用{@linkplain #getStandardFileManager getStandardFileManager}获得。
  *
  * <p>A compiler tool must function with any file manager as long as
- * any additional requirements as detailed in the methods below are
- * met.  If no file manager is provided, the compiler tool will use a
- * standard file manager such as the one returned by {@linkplain
- * #getStandardFileManager getStandardFileManager}.
+ * any additional requirements as detailed in the methods below are met.
+ * If no file manager is provided, the compiler tool will use a standard file manager such as the one returned by {@linkplain #getStandardFileManager getStandardFileManager}.
+ * <br/>只要满足下列方法中详细说明的任何附加要求，编译器工具就必须与任何文件管理器一起工作。
+ * <br/>如果没有提供文件管理器，编译器工具将使用标准的文件管理器，例如{@linkplain #getStandardFileManager getStandardFileManager}返回的文件管理器。
  *
  * <p>An instance implementing this interface must conform to
- * <cite>The Java&trade; Language Specification</cite>
- * and generate class files conforming to
+ * <cite>The Java&trade; Language Specification</cite> and generate class files conforming to
  * <cite>The Java&trade; Virtual Machine Specification</cite>.
- * The versions of these
- * specifications are defined in the {@linkplain Tool} interface.
+ * The versions of these specifications are defined in the {@linkplain Tool} interface.
+ * <br/>实现此接口的实例必须符合Java语法规范，生成符合Java虚拟机规范的class文件。
+ * <br/>这些规范的版本在{@linkplain Tool}接口中定义。
  *
- * Additionally, an instance of this interface supporting {@link
- * javax.lang.model.SourceVersion#RELEASE_6 SourceVersion.RELEASE_6}
- * or higher must also support {@linkplain javax.annotation.processing
- * annotation processing}.
+ * Additionally, an instance of this interface supporting {@link javax.lang.model.SourceVersion#RELEASE_6 SourceVersion.RELEASE_6}
+ * <br/>另外，该接口的一个实例支持{@link javax.lang.model。SourceVersion # RELEASE_6 SourceVersion。RELEASE_6}
+ * or higher must also support {@linkplain javax.annotation.processing annotation processing}.
+ * <br/>或更高版本也必须支持{@linkplain javax.annotation.processing}。
  *
- * <p>The compiler relies on two services: {@linkplain
- * DiagnosticListener diagnostic listener} and {@linkplain
- * JavaFileManager file manager}.  Although most classes and
- * interfaces in this package defines an API for compilers (and
- * tools in general) the interfaces {@linkplain DiagnosticListener},
- * {@linkplain JavaFileManager}, {@linkplain FileObject}, and
- * {@linkplain JavaFileObject} are not intended to be used in
- * applications.  Instead these interfaces are intended to be
- * implemented and used to provide customized services for a
+ * <p>The compiler relies on two services: {@linkplain DiagnosticListener diagnostic listener} and {@linkplain JavaFileManager file manager}.
+ * <br/>编译器依赖于两个服务:{@linkplain DiagnosticListener diagnostic listener}和{@linkplain JavaFileManager file manager}。
+ * Although most classes and interfaces in this package defines an API for compilers (and tools in general)
+ * the interfaces {@linkplain DiagnosticListener},{@linkplain JavaFileManager}, {@linkplain FileObject}, and {@linkplain JavaFileObject}
+ * are not intended to be used in applications.
+ * <br/>尽管这个包中的大多数类和接口为编译器(以及一般的工具)定义了一个API
+ * <br/>接口{@linkplain DiagnosticListener}、{@linkplain JavaFileManager}、{@linkplain FileObject}和{@linkplain JavaFileObject}不打算用于应用程序。
+ * Instead these interfaces are intended to be implemented and used to provide customized services for a
  * compiler and thus defines an SPI for compilers.
+ * <br/>相反，这些接口旨在实现并用于为编译器提供定制服务，从而为编译器定义SPI。
  *
  * <p>There are a number of classes and interfaces in this package
- * which are designed to ease the implementation of the SPI to
- * customize the behavior of a compiler:
+ * which are designed to ease the implementation of the SPI to customize the behavior of a compiler:
+ * <br/>这个包中有许多类和接口，它们被设计用来简化SPI的实现，以定制编译器的行为:
  *
  * <dl>
  *   <dt>{@link StandardJavaFileManager}</dt>
  *   <dd>
  *
  *     Every compiler which implements this interface provides a
- *     standard file manager for operating on regular {@linkplain
- *     java.io.File files}.  The StandardJavaFileManager interface
- *     defines additional methods for creating file objects from
- *     regular files.
+ *     standard file manager for operating on regular {@linkplain java.io.File files}.
+ *     The StandardJavaFileManager interface defines additional methods for creating file objects from regular files.
+ *     每个实现这个接口的编译器都提供了一个标准的文件管理器，用于操作常规的{@linkplain java.io.File}。
+ *     StandardJavaFileManager接口定义了用于从常规文件创建文件对象的其他方法。
  *
  *     <p>The standard file manager serves two purposes:
  *
  *     <ul>
- *       <li>basic building block for customizing how a compiler reads
- *       and writes files</li>
+ *       <li>basic building block for customizing how a compiler reads and writes files</li>
+ *
  *       <li>sharing between multiple compilation tasks</li>
  *     </ul>
  *
- *     <p>Reusing a file manager can potentially reduce overhead of
- *     scanning the file system and reading jar files.  Although there
- *     might be no reduction in overhead, a standard file manager must
- *     work with multiple sequential compilations making the following
- *     example a recommended coding pattern:
+ *     <p>Reusing a file manager can potentially reduce overhead of scanning the file system and reading jar files.
+ *     Although there might be no reduction in overhead,
+ *     a standard file manager must work with multiple sequential compilations making the following example a recommended coding pattern:
+ *     重用文件管理器可以潜在地减少扫描文件系统和读取jar文件的开销。
+ *     虽然开销可能不会减少，一个标准的文件管理器必须使用多个顺序编译，使以下示例成为推荐的编码模式:
  *
  *     <pre>
  *       File[] files1 = ... ; // input for first compilation task
@@ -151,13 +151,13 @@ import javax.annotation.processing.Processor;
  *   </dt>
  *   <dd>
  *
- *     Subclassing is not available for overriding the behavior of a
- *     standard file manager as it is created by calling a method on a
- *     compiler, not by invoking a constructor.  Instead forwarding
- *     (or delegation) should be used.  These classes makes it easy to
- *     forward most calls to a given file manager or file object while
- *     allowing customizing behavior.  For example, consider how to
- *     log all calls to {@linkplain JavaFileManager#flush}:
+ *     Subclassing is not available for overriding the behavior of a standard file manager
+ *     as it is created by calling a method on a compiler, not by invoking a constructor.
+ *     子类化不能用于覆盖标准文件管理器的行为. 因为它是通过调用编译器上的方法而不是调用构造函数创建的。
+ *     Instead forwarding (or delegation) should be used.  These classes makes it easy to
+ *     forward most calls to a given file manager or file object while allowing customizing behavior.
+ *     相反，应该使用转发(或委托)。这些类使得将大多数调用转发到给定的文件管理器或文件对象很容易，同时允许自定义行为。
+ *     For example, consider how to log all calls to {@linkplain JavaFileManager#flush}:
  *
  *     <pre>
  *       final {@linkplain java.util.logging.Logger Logger} logger = ...;
@@ -178,9 +178,9 @@ import javax.annotation.processing.Processor;
  *   <dd>
  *
  *     This class provides a basic file object implementation which
- *     can be used as building block for creating file objects.  For
- *     example, here is how to define a file object which represent
- *     source code stored in a string:
+ *     can be used as building block for creating file objects.
+ *     For example, here is how to define a file object which represent source code stored in a string:
+ *     这个类提供了一个基本的文件对象实现，它可以用作创建文件对象的构建块。例如，下面是如何定义一个文件对象，它表示存储在字符串中的源代码:
  *
  *     <pre>
  *       /**
@@ -221,18 +221,18 @@ import javax.annotation.processing.Processor;
 public interface JavaCompiler extends Tool, OptionChecker {
 
     /**
-     * Creates a future for a compilation task with the given
-     * components and arguments.  The compilation might not have
-     * completed as described in the CompilationTask interface.
+     * Creates a future for a compilation task with the given components and arguments.
+     * The compilation might not have completed as described in the CompilationTask interface.
+     * <br/>使用给定的组件和参数为编译任务创建一个future。编译可能没有像CompilationTask接口中描述的那样完成。
      *
-     * <p>If a file manager is provided, it must be able to handle all
-     * locations defined in {@link StandardLocation}.
+     * <p>If a file manager is provided, it must be able to handle all locations defined in {@link StandardLocation}.
+     * <br/>如果提供了一个文件管理器，它必须能够处理在{@link StandardLocation}中定义的所有位置。
      *
-     * <p>Note that annotation processing can process both the
-     * compilation units of source code to be compiled, passed with
-     * the {@code compilationUnits} parameter, as well as class
-     * files, whose names are passed with the {@code classes}
-     * parameter.
+     * <p>Note that annotation processing can process both the compilation units of source code to be compiled,
+     * passed with the {@code compilationUnits} parameter, as well as class files,
+     * whose names are passed with the {@code classes} parameter.
+     * <br/>注意，注解处理既可以处理要编译的源代码的编译单元，
+     * <br/>(通过{@code compilationUnits}参数传递)，也可以处理类文件(通过{@code classes}参数传递其名称)。
      *
      * @param out a Writer for additional output from the compiler;
      * use {@code System.err} if {@code null}
@@ -263,10 +263,10 @@ public interface JavaCompiler extends Tool, OptionChecker {
                             Iterable<? extends JavaFileObject> compilationUnits);
 
     /**
-     * Gets a new instance of the standard file manager implementation
-     * for this tool.  The file manager will use the given diagnostic
-     * listener for producing any non-fatal diagnostics.  Fatal errors
-     * will be signaled with the appropriate exceptions.
+     * Gets a new instance of the standard file manager implementation for this tool.
+     * The file manager will use the given diagnostic listener for producing any non-fatal diagnostics.
+     * Fatal errors will be signaled with the appropriate exceptions.
+     * <br/>获取此工具的标准文件管理器实现的新实例。文件管理器将使用给定的诊断侦听器生成任何非致命诊断。致命错误将以适当的异常表示。
      *
      * <p>The standard file manager will be automatically reopened if
      * it is accessed after calls to {@code flush} or {@code close}.
@@ -287,13 +287,13 @@ public interface JavaCompiler extends Tool, OptionChecker {
         Charset charset);
 
     /**
-     * Interface representing a future for a compilation task.  The
-     * compilation task has not yet started.  To start the task, call
-     * the {@linkplain #call call} method.
+     * Interface representing a future for a compilation task.  The compilation task has not yet started.
+     * To start the task, call the {@linkplain #call call} method.
+     * <br/>接口，表示编译任务的未来。编译任务尚未启动。要启动该任务，请调用{@linkplain #call call}方法。
      *
-     * <p>Before calling the call method, additional aspects of the
-     * task can be configured, for example, by calling the
-     * {@linkplain #setProcessors setProcessors} method.
+     * <p>Before calling the call method, additional aspects of the task can be configured,
+     * for example, by calling the {@linkplain #setProcessors setProcessors} method.
+     * <br/>在调用call方法之前，可以配置任务的其他方面，例如，通过调用{@linkplain #setProcessors setProcessors}方法。
      */
     interface CompilationTask extends Callable<Boolean> {
 
@@ -317,9 +317,9 @@ public interface JavaCompiler extends Tool, OptionChecker {
         void setLocale(Locale locale);
 
         /**
-         * Performs this compilation task.  The compilation may only
-         * be performed once.  Subsequent calls to this method throw
-         * IllegalStateException.
+         * Performs this compilation task.  The compilation may only be performed once.
+         * Subsequent calls to this method throw IllegalStateException.
+         * <br/>执行编译任务。编译只能执行一次。对该方法的后续调用将抛出IllegalStateException。
          *
          * @return true if and only all the files compiled without errors;
          * false otherwise
