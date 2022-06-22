@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>javax.tools.JavaFileManager</OriginalElement>
+  <nodes>
+    <node x="407.0" y="240.0">javax.tools.ForwardingJavaFileManager</node>
+    <node x="21.25" y="80.0">javax.tools.OptionChecker</node>
+    <node x="138.0" y="240.0">javax.tools.StandardJavaFileManager</node>
+    <node x="172.60000000000002" y="160.0">javax.tools.JavaFileManager</node>
+    <node x="209.25" y="80.0">java.io.Closeable</node>
+    <node x="0.0" y="240.0">javax.tools.JavaFileManager.Location</node>
+    <node x="191.25" y="0.0">java.lang.AutoCloseable</node>
+    <node x="357.25" y="80.0">java.io.Flushable</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="java.io.Closeable" target="java.lang.AutoCloseable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.JavaFileManager" target="javax.tools.OptionChecker" relationship="INTERFACE_GENERALIZATION">
+      <point x="-60.0" y="-15.0" />
+      <point x="202.60000000000002" y="135.0" />
+      <point x="105.25" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.ForwardingJavaFileManager" target="javax.tools.JavaFileManager" relationship="REALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="557.5" y="215.0" />
+      <point x="322.6" y="215.0" />
+      <point x="60.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.StandardJavaFileManager" target="javax.tools.JavaFileManager" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.JavaFileManager" target="java.io.Closeable" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="262.6" y="135.0" />
+      <point x="273.25" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.JavaFileManager" target="java.io.Flushable" relationship="INTERFACE_GENERALIZATION">
+      <point x="60.0" y="-15.0" />
+      <point x="322.6" y="135.0" />
+      <point x="419.75" y="135.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.JavaFileManager.Location" target="javax.tools.JavaFileManager" relationship="INNER_CLASS">
+      <point x="0.0" y="-15.0" />
+      <point x="59.0" y="215.0" />
+      <point x="202.60000000000002" y="215.0" />
+      <point x="-60.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="230.5" y="95.5" />
+  <SelectedNodes>
+    <node>javax.tools.StandardJavaFileManager</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

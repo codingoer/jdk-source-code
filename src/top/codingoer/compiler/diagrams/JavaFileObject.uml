@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>javax.tools.JavaFileObject</OriginalElement>
+  <nodes>
+    <node x="17.5" y="0.0">javax.tools.FileObject</node>
+    <node x="0.0" y="80.0">javax.tools.JavaFileObject</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="javax.tools.JavaFileObject" target="javax.tools.FileObject" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="82.5" y="55.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

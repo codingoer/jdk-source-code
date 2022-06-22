@@ -3,37 +3,37 @@
   <ID>JAVA</ID>
   <OriginalElement>javax.tools.JavaCompiler</OriginalElement>
   <nodes>
-    <node x="0.0" y="0.0">javax.tools.OptionChecker</node>
-    <node x="239.75" y="80.0">javax.tools.JavaCompiler</node>
-    <node x="306.75" y="0.0">javax.tools.Tool</node>
-    <node x="30.75" y="80.0">javax.tools.DocumentationTool</node>
+    <node x="223.0" y="80.0">javax.tools.DocumentationTool.Location</node>
+    <node x="75.5" y="202.0">javax.tools.JavaCompiler</node>
+    <node x="0.0" y="282.0">javax.tools.JavaCompiler.CompilationTask</node>
+    <node x="111.25" y="0.0">javax.tools.DocumentationTool</node>
+    <node x="0.0" y="91.0">javax.tools.DocumentationTool.DocumentationTask</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="javax.tools.DocumentationTool" target="javax.tools.Tool" relationship="INTERFACE_GENERALIZATION">
-      <point x="47.25" y="-15.0" />
-      <point x="172.5" y="60.0" />
-      <point x="347.75" y="60.0" />
+    <edge source="javax.tools.DocumentationTool.Location" target="javax.tools.DocumentationTool" relationship="INNER_CLASS">
+      <point x="0.0" y="-38.5" />
+      <point x="321.0" y="55.0" />
+      <point x="211.25" y="55.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="javax.tools.JavaCompiler" target="javax.tools.OptionChecker" relationship="INTERFACE_GENERALIZATION">
-      <point x="-36.0" y="-15.0" />
-      <point x="275.75" y="50.0" />
-      <point x="78.0" y="50.0" />
+    <edge source="javax.tools.DocumentationTool.DocumentationTask" target="javax.tools.DocumentationTool" relationship="INNER_CLASS">
+      <point x="0.0" y="-27.5" />
+      <point x="101.5" y="55.0" />
+      <point x="211.25" y="55.0" />
       <point x="0.0" y="15.0" />
     </edge>
-    <edge source="javax.tools.JavaCompiler" target="javax.tools.Tool" relationship="INTERFACE_GENERALIZATION">
-      <point x="36.0" y="-15.0" />
-      <point x="0.0" y="15.0" />
-    </edge>
-    <edge source="javax.tools.DocumentationTool" target="javax.tools.OptionChecker" relationship="INTERFACE_GENERALIZATION">
-      <point x="-47.25" y="-15.0" />
+    <edge source="javax.tools.JavaCompiler.CompilationTask" target="javax.tools.JavaCompiler" relationship="INNER_CLASS">
+      <point x="0.0" y="-38.5" />
       <point x="0.0" y="15.0" />
     </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="129.0" y="55.0" />
+  <settings layout="Hierarchic" zoom="0.7" showDependencies="false" x="329.7142857142858" y="186.71428571428578" />
   <SelectedNodes />
-  <Categories />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Properties</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>
