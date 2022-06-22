@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>javax.tools.JavaCompiler</OriginalElement>
+  <nodes>
+    <node x="0.0" y="0.0">javax.tools.OptionChecker</node>
+    <node x="239.75" y="80.0">javax.tools.JavaCompiler</node>
+    <node x="306.75" y="0.0">javax.tools.Tool</node>
+    <node x="30.75" y="80.0">javax.tools.DocumentationTool</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="javax.tools.DocumentationTool" target="javax.tools.Tool" relationship="INTERFACE_GENERALIZATION">
+      <point x="47.25" y="-15.0" />
+      <point x="172.5" y="60.0" />
+      <point x="347.75" y="60.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.JavaCompiler" target="javax.tools.OptionChecker" relationship="INTERFACE_GENERALIZATION">
+      <point x="-36.0" y="-15.0" />
+      <point x="275.75" y="50.0" />
+      <point x="78.0" y="50.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.JavaCompiler" target="javax.tools.Tool" relationship="INTERFACE_GENERALIZATION">
+      <point x="36.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.DocumentationTool" target="javax.tools.OptionChecker" relationship="INTERFACE_GENERALIZATION">
+      <point x="-47.25" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="129.0" y="55.0" />
+  <SelectedNodes />
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

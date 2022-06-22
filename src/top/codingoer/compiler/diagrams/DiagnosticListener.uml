@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>javax.tools.DiagnosticListener</OriginalElement>
+  <nodes>
+    <node x="0.0" y="106.0">javax.tools.Diagnostic.Kind</node>
+    <node x="21.5" y="0.0">javax.tools.Diagnostic</node>
+    <node x="283.0" y="46.0">javax.tools.DiagnosticListener</node>
+    <node x="236.0" y="126.0">javax.tools.DiagnosticCollector</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="javax.tools.DiagnosticCollector" target="javax.tools.DiagnosticListener" relationship="REALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="javax.tools.Diagnostic.Kind" target="javax.tools.Diagnostic" relationship="INNER_CLASS">
+      <point x="0.0" y="-74.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="104.0" y="130.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
