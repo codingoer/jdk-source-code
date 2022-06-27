@@ -22,7 +22,7 @@ public class CompilerTool {
             System.out.println( version );
         }
 
-        File file = new File("C:\\Users\\enmonster\\jdk8-source-code\\src\\top\\codingoer\\compiler\\HelloWorld.java");
+        File file = new File("/Users/lionel/IdeaProjects/codingoer/jdk8-source-code/src/top/codingoer/compiler/HelloWorld.java");
 
         StandardJavaFileManager standardFileManager = javac.getStandardFileManager(null, null, null);
         Iterable<? extends JavaFileObject> javaFileObjects = standardFileManager.getJavaFileObjects(file);

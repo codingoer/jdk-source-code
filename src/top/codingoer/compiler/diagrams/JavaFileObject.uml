@@ -3,19 +3,46 @@
   <ID>JAVA</ID>
   <OriginalElement>javax.tools.JavaFileObject</OriginalElement>
   <nodes>
-    <node x="17.5" y="0.0">javax.tools.FileObject</node>
-    <node x="0.0" y="80.0">javax.tools.JavaFileObject</node>
+    <node x="589.75" y="80.0">javax.tools.JavaFileObject.Kind</node>
+    <node x="353.75" y="80.0">javax.tools.SimpleJavaFileObject</node>
+    <node x="464.75" y="0.0">javax.tools.JavaFileObject</node>
+    <node x="52.75" y="80.0">javax.tools.ForwardingJavaFileObject</node>
+    <node x="0.0" y="0.0">javax.tools.ForwardingFileObject</node>
   </nodes>
   <notes />
   <edges>
-    <edge source="javax.tools.JavaFileObject" target="javax.tools.FileObject" relationship="INTERFACE_GENERALIZATION">
-      <point x="0.0" y="-15.0" />
+    <edge source="javax.tools.ForwardingJavaFileObject" target="javax.tools.ForwardingFileObject" relationship="GENERALIZATION">
+      <point x="-70.25" y="-15.0" />
       <point x="0.0" y="15.0" />
     </edge>
+    <edge source="javax.tools.JavaFileObject.Kind" target="javax.tools.JavaFileObject" relationship="INNER_CLASS">
+      <point x="0.0" y="-15.0" />
+      <point x="632.75" y="60.0" />
+      <point x="588.5" y="60.0" />
+      <point x="41.25" y="15.0" />
+    </edge>
+    <edge source="javax.tools.SimpleJavaFileObject" target="javax.tools.JavaFileObject" relationship="REALIZATION">
+      <point x="0.0" y="-15.0" />
+      <point x="461.75" y="50.0" />
+      <point x="506.0" y="50.0" />
+      <point x="-41.25" y="15.0" />
+    </edge>
+    <edge source="javax.tools.ForwardingJavaFileObject" target="javax.tools.JavaFileObject" relationship="REALIZATION">
+      <point x="70.25" y="-15.0" />
+      <point x="263.5" y="60.0" />
+      <point x="461.75" y="60.0" />
+      <point x="461.75" y="50.0" />
+      <point x="506.0" y="50.0" />
+      <point x="-41.25" y="15.0" />
+    </edge>
   </edges>
-  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="82.5" y="55.0" />
-  <SelectedNodes />
-  <Categories />
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="207.5" y="224.5" />
+  <SelectedNodes>
+    <node>javax.tools.JavaFileObject.Kind</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Inner Classes</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
   <VISIBILITY>private</VISIBILITY>
 </Diagram>

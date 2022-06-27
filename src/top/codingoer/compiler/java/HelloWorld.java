@@ -1,4 +1,4 @@
-package top.codingoer.compiler;
+package top.codingoer.compiler.java;
 
 public class HelloWorld {
 
