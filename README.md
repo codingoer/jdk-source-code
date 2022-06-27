@@ -42,4 +42,18 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.211-b12, mixed mode)
 
 ![SEoCaQ](image/SEoCaQ.png)
 
+## 目录结构
+
+- image  
+  README中的图片
+  
+- java  
+  java文件，普通目录中的，启用项目的时候不会编译这个文件下的文件，用于学习JavaCompiler
+  
+- source  
+  JDK8的源码，解压src.zip，将里面的所有文件放到这个目录下，普通目录不会进行编译
+  
+- src  
+  学习JDK8源码的测试代码，Sources目录下，会进行编译的
+
 
