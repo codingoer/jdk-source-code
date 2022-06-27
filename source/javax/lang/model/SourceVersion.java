@@ -31,10 +31,10 @@ import java.util.HashSet;
 
 /**
  * Source versions of the Java&trade; programming language.
+ * <br/>Java&trade编程语言的源代码版本。
  *
- * See the appropriate edition of
- * <cite>The Java&trade; Language Specification</cite>
- * for information about a particular source version.
+ * See the appropriate edition of <cite>The Java&trade; Language Specification</cite> for information about a particular source version.
+ * <br/>查看Java语言规范以获取有关特定源版本的信息。
  *
  * <p>Note that additional source version constants will be added to
  * model future releases of the language.
