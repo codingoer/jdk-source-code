@@ -41,7 +41,7 @@ import javax.annotation.processing.Processor;
  * <br/>编译器可能在编译期间生成诊断信息(例如，错误消息)。如果提供了诊断侦听器，则将向该侦听器提供诊断信息。
  * If no listener is provided, the diagnostics will be formatted in an unspecified format and written to the default output,
  * which is {@code System.err} unless otherwise specified.
- * <br/>如果没有提供监听器，诊断将以未指定的格式格式化并写入默认输出，该输出为{@code System}, 除非另有说明。
+ * <br/>如果没有提供监听器，诊断将以未指定的格式格式化并写入默认输出，该输出为{@code System.err}, 除非另有说明。
  * Even if a diagnostic listener is supplied, some diagnostics might not fit in a {@code Diagnostic} and will be written to the default output.
  * <br/>即使提供了诊断侦听器，一些诊断可能不适合{@code diagnostic}，并将被写入默认输出。
  *
@@ -97,7 +97,7 @@ import javax.annotation.processing.Processor;
  *
  *     <ul>
  *       <li>basic building block for customizing how a compiler reads and writes files</li>
- *
+ *       <li>定制编译器读写文件方式的基本构建块、多个编译任务之间共享</li>
  *       <li>sharing between multiple compilation tasks</li>
  *     </ul>
  *
