@@ -45,34 +45,34 @@ import static javax.tools.JavaFileObject.Kind;
  * A number of hints can be provided to a file manager as to where to create files.  Any file manager might choose to ignore these hints.
  * <br/>可以向文件管理器提供许多关于在何处创建文件的提示。任何文件管理器都可能选择忽略这些提示。
  *
- * <p>Some methods in this interface use class names.  Such class
- * names must be given in the Java Virtual Machine internal form of
- * fully qualified class and interface names.  For convenience '.'
- * and '/' are interchangeable.  The internal form is defined in
- * chapter four of
+ * <p>Some methods in this interface use class names.
+ * Such class names must be given in the Java Virtual Machine internal form of fully qualified class and interface names.
+ * <br/>这个接口中的一些方法使用类名。这样的类名必须以Java虚拟机内部的完全限定类名和接口名的形式给出。
+ * For convenience '.' and '/' are interchangeable.  The internal form is defined in chapter four of
  * <cite>The Java&trade; Virtual Machine Specification</cite>.
+ * <br/>为了方便'.' and '/'是可以互换的。内部形式在Java虚拟机规范的第四章中定义
 
  * <blockquote><p>
  *   <i>Discussion:</i> this means that the names
  *   "java/lang.package-info", "java/lang/package-info",
- *   "java.lang.package-info", are valid and equivalent.  Compare to
- *   binary name as defined in
+ *   "java.lang.package-info", are valid and equivalent.
+ *   Compare to binary name as defined in
  *   <cite>The Java&trade; Language Specification</cite>,
  *   section 13.1 "The Form of a Binary".
  * </p></blockquote>
  *
- * <p>The case of names is significant.  All names should be treated
- * as case-sensitive.  For example, some file systems have
- * case-insensitive, case-aware file names.  File objects representing
- * such files should take care to preserve case by using {@link
- * java.io.File#getCanonicalFile} or similar means.  If the system is
- * not case-aware, file objects must use other means to preserve case.
- *
- * <p><em><a name="relative_name">Relative names</a>:</em> some
- * methods in this interface use relative names.  A relative name is a
+ * <p>The case of names is significant.  All names should be treated as case-sensitive.
+ * For example, some file systems have case-insensitive, case-aware file names.
+ * <br/>名称的情况很重要。所有名称都应该区分大小写。例如，一些文件系统具有区分大小写的文件名。
+ * File objects representing such files should take care to preserve case by using {@link java.io.File#getCanonicalFile} or similar means.
+ * <br/>表示此类文件的文件对象应注意使用{@link java.io.File#getCanonicalFile}或类似的方法来保留大小写。
+ * If the system is not case-aware, file objects must use other means to preserve case.
+ * <br/>如果系统不区分大小写，文件对象必须使用其他方法来保留大小写。
+ * <p><em><a name="relative_name">Relative names</a>:</em>
+ * some methods in this interface use relative names.  A relative name is a
  * non-null, non-empty sequence of path segments separated by '/'.
- * '.' or '..'  are invalid path segments.  A valid relative name must
- * match the "path-rootless" rule of <a
+ * '.' or '..'  are invalid path segments.
+ * A valid relative name must match the "path-rootless" rule of <a
  * href="http://www.ietf.org/rfc/rfc3986.txt">RFC&nbsp;3986</a>,
  * section&nbsp;3.3.  Informally, this should be true:
  *
@@ -81,17 +81,17 @@ import static javax.tools.JavaFileObject.Kind;
  *
  * <p>All methods in this interface might throw a SecurityException.
  *
- * <p>An object of this interface is not required to support
- * multi-threaded access, that is, be synchronized.  However, it must
- * support concurrent access to different file objects created by this
- * object.
+ * <p>An object of this interface is not required to support multi-threaded access,
+ * that is, be synchronized.  However, it must
+ * support concurrent access to different file objects created by this object.
+ * <br/>该接口的对象不需要支持多线程访问，也就是说，要同步。但是，它必须支持对该对象创建的不同文件对象的并发访问。
  *
  * <p><em>Implementation note:</em> a consequence of this requirement
- * is that a trivial implementation of output to a {@linkplain
- * java.util.jar.JarOutputStream} is not a sufficient implementation.
- * That is, rather than creating a JavaFileObject that returns the
- * JarOutputStream directly, the contents must be cached until closed
- * and then written to the JarOutputStream.
+ * is that a trivial implementation of output to a {@linkplain java.util.jar.JarOutputStream} is not a sufficient implementation.
+ * That is, rather than creating a JavaFileObject that returns the JarOutputStream directly,
+ * the contents must be cached until closed and then written to the JarOutputStream.
+ * <br/>这种需求的结果是，向JarOutputStream输出的简单实现并不是一个充分的实现。
+ * <br/>也就是说，与直接创建返回JarOutputStream的JavaFileObject不同，必须缓存内容直到关闭，然后写入到JarOutputStream。
  *
  * <p>Unless explicitly allowed, all methods in this interface might
  * throw a NullPointerException if given a {@code null} argument.
@@ -105,8 +105,8 @@ import static javax.tools.JavaFileObject.Kind;
 public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
 
     /**
-     * Interface for locations of file objects.  Used by file managers
-     * to determine where to place or search for file objects.
+     * Interface for locations of file objects.  Used by file managers to determine where to place or search for file objects.
+     * <br/>用于文件对象位置的接口。由文件管理器使用，用于确定放置或搜索文件对象的位置。
      */
     interface Location {
         /**
@@ -117,9 +117,9 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
         String getName();
 
         /**
-         * Determines if this is an output location.  An output
-         * location is a location that is conventionally used for
-         * output.
+         * Determines if this is an output location.
+         * An output location is a location that is conventionally used for output.
+         * <br/>确定这是否是一个输出位置。输出位置是通常用于输出的位置。
          *
          * @return true if this is an output location, false otherwise
          */
@@ -127,11 +127,11 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
     }
 
     /**
-     * Gets a class loader for loading plug-ins from the given
-     * location.  For example, to load annotation processors, a
-     * compiler will request a class loader for the {@link
-     * StandardLocation#ANNOTATION_PROCESSOR_PATH
-     * ANNOTATION_PROCESSOR_PATH} location.
+     * Gets a class loader for loading plug-ins from the given location.
+     * For example, to load annotation processors,
+     * a compiler will request a class loader for the {@link StandardLocation#ANNOTATION_PROCESSOR_PATH ANNOTATION_PROCESSOR_PATH} location.
+     * <br/>获取用于从给定位置装入插件的类加载器。
+     * <br/>例如，要加载注释处理器，编译器会请求一个类加载器来获取位置{@link StandardLocation#ANNOTATION_PROCESSOR_PATH}。
      *
      * @param location a location
      * @return a class loader for the given location; or {@code null}
@@ -145,9 +145,9 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
     ClassLoader getClassLoader(Location location);
 
     /**
-     * Lists all file objects matching the given criteria in the given
-     * location.  List file objects in "subpackages" if recurse is
-     * true.
+     * Lists all file objects matching the given criteria in the given location.
+     * List file objects in "subpackages" if recurse is true.
+     * <br/>列出给定位置中匹配给定条件的所有文件对象。如果递归为真，列出“subpackages”中的文件对象。
      *
      * <p>Note: even if the given location is unknown to this file
      * manager, it may not return {@code null}.  Also, an unknown
@@ -171,9 +171,9 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
         throws IOException;
 
     /**
-     * Infers a binary name of a file object based on a location.  The
-     * binary name returned might not be a valid binary name according to
-     * <cite>The Java&trade; Language Specification</cite>.
+     * Infers a binary name of a file object based on a location.
+     * The binary name returned might not be a valid binary name according to <cite>The Java&trade; Language Specification</cite>.
+     * 根据位置推断文件对象的二进制名称。根据Java语言规范，返回的二进制名称可能不是有效的二进制名称
      *
      * @param location a location
      * @param file a file object
@@ -185,8 +185,8 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
     String inferBinaryName(Location location, JavaFileObject file);
 
     /**
-     * Compares two file objects and return true if they represent the
-     * same underlying object.
+     * Compares two file objects and return true if they represent the same underlying object.
+     *
      *
      * @param a a file object
      * @param b a file object
@@ -225,8 +225,8 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
 
     /**
      * Gets a {@linkplain JavaFileObject file object} for input
-     * representing the specified class of the specified kind in the
-     * given location.
+     * representing the specified class of the specified kind in the given location.
+     * <br/>获取输入的{@linkplain JavaFileObject 文件对象}，表示给定位置中指定类型的指定类。
      *
      * @param location a location
      * @param className the name of a class
@@ -251,17 +251,17 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
 
     /**
      * Gets a {@linkplain JavaFileObject file object} for output
-     * representing the specified class of the specified kind in the
-     * given location.
+     * representing the specified class of the specified kind in the given location.
+     * <br/>获取输出的{@linkplain JavaFileObject文件对象}，表示给定位置中指定类型的指定类。
      *
      * <p>Optionally, this file manager might consider the sibling as
-     * a hint for where to place the output.  The exact semantics of
-     * this hint is unspecified.  The JDK compiler, javac, for
-     * example, will place class files in the same directories as
-     * originating source files unless a class file output directory
-     * is provided.  To facilitate this behavior, javac might provide
-     * the originating source file as sibling when calling this
-     * method.
+     * a hint for where to place the output.  The exact semantics of this hint is unspecified.
+     * <br/>可选地，这个文件管理器可以将同级作为放置输出的提示。这个提示的确切语义是不确定的。
+     * The JDK compiler, javac, for example, will place class files in the same directories as
+     * originating source files unless a class file output directory is provided.
+     * <br/>例如，JDK编译器javac会将类文件放在与原始源文件相同的目录中，除非提供了类文件输出目录。
+     * To facilitate this behavior, javac might provide the originating source file as sibling when calling this method.
+     * <br/>为了方便这种行为，在调用此方法时，javac可能会将原始源文件作为兄弟文件提供。
      *
      * @param location a location
      * @param className the name of a class
@@ -378,9 +378,9 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
         throws IOException;
 
     /**
-     * Flushes any resources opened for output by this file manager
-     * directly or indirectly.  Flushing a closed file manager has no
-     * effect.
+     * Flushes any resources opened for output by this file manager directly or indirectly.
+     * Flushing a closed file manager has no effect.
+     * <br/>直接或间接刷新此文件管理器为输出而打开的任何资源。刷新已关闭的文件管理器无效。
      *
      * @throws IOException if an I/O error occurred
      * @see #close
@@ -388,12 +388,12 @@ public interface JavaFileManager extends Closeable, Flushable, OptionChecker {
     void flush() throws IOException;
 
     /**
-     * Releases any resources opened by this file manager directly or
-     * indirectly.  This might render this file manager useless and
+     * Releases any resources opened by this file manager directly or indirectly.
+     * This might render this file manager useless and
      * the effect of subsequent calls to methods on this object or any
-     * objects obtained through this object is undefined unless
-     * explicitly allowed.  However, closing a file manager which has
-     * already been closed has no effect.
+     * objects obtained through this object is undefined unless explicitly allowed.
+     * However, closing a file manager which has already been closed has no effect.
+     *
      *
      * @throws IOException if an I/O error occurred
      * @see #flush
