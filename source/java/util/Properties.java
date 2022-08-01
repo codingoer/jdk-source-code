@@ -40,21 +40,21 @@ import java.security.PrivilegedAction;
 import sun.util.spi.XmlPropertiesProvider;
 
 /**
- * The {@code Properties} class represents a persistent set of
- * properties. The {@code Properties} can be saved to a stream
- * or loaded from a stream. Each key and its corresponding value in
- * the property list is a string.
+ * The {@code Properties} class represents a persistent set of properties.
+ * The {@code Properties} can be saved to a stream or loaded from a stream.
+ * Each key and its corresponding value in the property list is a string.
+ * <br/> {@code Properties}类表示一组持久的属性。可以保存到流或从流加载。属性列表中的每个键及其对应值都是一个字符串。
  * <p>
- * A property list can contain another property list as its
- * "defaults"; this second property list is searched if
- * the property key is not found in the original property list.
+ * A property list can contain another property list as its "defaults";
+ * this second property list is searched if the property key is not found in the original property list.
+ * <br/>属性列表可以包含另一个属性列表作为它的“默认值”;如果在原始属性列表中没有找到属性键，则搜索第二个属性列表。
  * <p>
  * Because {@code Properties} inherits from {@code Hashtable}, the
- * {@code put} and {@code putAll} methods can be applied to a
- * {@code Properties} object.  Their use is strongly discouraged as they
- * allow the caller to insert entries whose keys or values are not
- * {@code Strings}.  The {@code setProperty} method should be used
- * instead.  If the {@code store} or {@code save} method is called
+ * {@code put} and {@code putAll} methods can be applied to a {@code Properties} object.
+ * Their use is strongly discouraged as they allow the caller to insert entries whose keys or values are not {@code Strings}.
+ * The {@code setProperty} method should be used instead.
+ * <br/>强烈反对使用它们，因为它们允许调用者插入键或值不是{@code string}的条目。应该使用{@code setProperty}方法来代替。
+ * If the {@code store} or {@code save} method is called
  * on a "compromised" {@code Properties} object that contains a
  * non-{@code String} key or value, the call will fail. Similarly,
  * the call to the {@code propertyNames} or {@code list} method
@@ -126,8 +126,8 @@ class Properties extends Hashtable<Object,Object> {
      private static final long serialVersionUID = 4112578634029874840L;
 
     /**
-     * A property list that contains default values for any keys not
-     * found in this property list.
+     * A property list that contains default values for any keys not found in this property list.
+     * 一个属性列表，其中包含此属性列表中未找到的任何键的默认值。
      *
      * @serial
      */
